@@ -22,10 +22,10 @@ public class StudentMarkTracker {
 
     public static double[] calculateAverageMarks(int[][] marks) {
         double[] averageMarks = new double[marks.length];
-        for(int i = 0; i < marks.length; i++ ) {
+        for (int i = 0; i < marks.length; i++ ) {
             double marksTotal = 0;
 
-            for(int j = 0; j < marks[i].length; j++) {
+            for (int j = 0; j < marks[i].length; j++) {
                 marksTotal += marks[i][j];
             }
             averageMarks[i] = marksTotal / marks[i].length;
@@ -34,20 +34,15 @@ public class StudentMarkTracker {
     }
 
     public static void printResults(double[] averageMarks) {
-        for(int i = 0; i < averageMarks.length; i++) {
-            int roundedAverageMark = (int)Math.round(averageMarks[i]);
-            switch (roundedAverageMark) {
-                case 0, 1, 2, 3:
-                    System.out.println("Student Nr. " + (i + 1) + " did not pass! (" + averageMarks[i] + ")");
-                    break;
-                case 4, 5, 6:
-                    System.out.println("Student Nr. " + (i + 1) + " had decent results! (" + averageMarks[i] + ")");
-                    break;
-                case 7, 8:
-                    System.out.println("Student Nr. " + (i + 1) + " had great results! (" + averageMarks[i] + ")");
-                    break;
-                default:
-                    System.out.println("Student Nr. " + (i + 1) + " had excellent results! (" + averageMarks[i] + ")");
+        for (int i = 0; i < averageMarks.length; i++) {
+            if (averageMarks[i] < 4) {
+                System.out.println("Student Nr. " + (i + 1) + " did not pass! (" + averageMarks[i] + ")");
+            } else if (averageMarks[i] < 7) {
+                System.out.println("Student Nr. " + (i + 1) + " had decent results! (" + averageMarks[i] + ")");
+            } else if (averageMarks[i] < 9) {
+                System.out.println("Student Nr. " + (i + 1) + " had great results! (" + averageMarks[i] + ")");
+            } else {
+                System.out.println("Student Nr. " + (i + 1) + " had excellent results! (" + averageMarks[i] + ")");
             }
         }
     }
